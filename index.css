@@ -1,61 +1,104 @@
 @import "tailwindcss";
-@plugin "daisyui";
-@plugin "daisyui" {
-  themes: light --default, dark --prefersdark, cupcake;
-}
 
 * {
   transition-property: all;
-  transition-timing-function: var(
-    --tw-ease,
-    var(--default-transition-timing-function)
-  );
-  transition-duration: var(--tw-duration, var(--default-transition-duration));
-  --tw-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
 }
 
-@theme {
-  --breakpoint-xxs: 21.25rem; /* COMMENT: 340px */
-  --breakpoint-xs: 23.125rem; /* COMMENT: 363px */
-  --breakpoint-xxl: 82.5rem; /* COMMENT: 1320px */
-  --color-picto-primary: #9929fb;
-  --color-picto-primary-dark: #650fa0;
-  --color-soft-white: #f0f1f3;
-  --color-soft-dark: #87909d;
-}
-
-.btn-primary {
-  @apply bg-picto-primary border-0 text-white hover:scale-[102%] hover:bg-picto-primary-dark transition-all duration-500;
-}
 body {
-  font-family: "Work Sans", sans-serif;
+  font-family: "Inter", "Work Sans", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
 }
 
-.content {
-  @apply max-xxl:w-full xxl:max-w-[1320px] xxl:mx-auto;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.section-title {
-  @apply md:font-semibold text-3xl sm:text-4xl md:text-5xl font-medium;
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
 }
 
-.center {
-  @apply flex justify-center items-center;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #3b82f6, #9333ea);
+  border-radius: 4px;
 }
 
-.introduction-profile-background {
-  background: radial-gradient(
-      circle at 12% 100%,
-      #ffe2b0f5 1% 5px,
-      transparent 15%
-    ),
-    /* bottom left */
-      radial-gradient(circle at 95% -15%, #da4df166 5%, transparent 30%),
-    /* top right */
-      radial-gradient(circle at center right, #c4f5e9b2 2%, transparent 35%); /* center right */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #2563eb, #7e22ce);
 }
-.blog-background {
-  background: radial-gradient(circle at -10% 0%, #da4df166 1%, transparent 25%),
-    radial-gradient(circle at 110% 30%, #c4f5e9b2 5%, transparent 25%);
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Improve text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Optimize for mobile performance */
+@media (max-width: 768px) {
+  * {
+    transition-duration: 150ms;
+  }
 }

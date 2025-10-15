@@ -1,16 +1,16 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "../components/common/navbar/NavBar";
 import Footer from "../components/common/footer/Footer";
+import NavBar from "../components/common/navbar/NavBar";
 import ScrollToTop from "../components/common/scrollToTop/ScrollToTop";
 
 const Main = () => {
   return (
-    <div data-theme={"light"} className="relative">
+    <div className="min-h-screen bg-white">
       <NavBar />
-      <Outlet />
-      <div className="bg-[#2A374A]">
-        <Footer />
-      </div>
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
       <ScrollToTop />
     </div>
   );

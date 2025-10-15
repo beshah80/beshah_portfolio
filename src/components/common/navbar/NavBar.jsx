@@ -1,44 +1,19 @@
 import { useEffect, useState } from "react";
-import logo from "../../../assets/logo.png";
-import { Link } from "react-scroll";
+import { Link, useLocation } from "react-router-dom";
 
 const navItems = [
-  { id: 1, name: "Home", url: "introduction" },
-  { id: 2, name: "About", url: "profile" },
-  { id: 3, name: "Process", url: "work-process" },
-  { id: 4, name: "Portfolio", url: "portfolio" },
-  { id: 5, name: "Blog", url: "blog" },
-  { id: 6, name: "Services", url: "services" },
+  { id: 1, name: "Home", path: "/" },
+  { id: 2, name: "About", path: "/about" },
+  { id: 3, name: "Projects", path: "/projects" },
+  { id: 4, name: "Skills", path: "/skills" },
+  { id: 5, name: "Services", path: "/services" },
+  { id: 6, name: "Contact", path: "/contact" },
 ];
-
-const handleMenuClick = () => {
-  if (document.activeElement instanceof HTMLElement) {
-    document.activeElement.blur();
-  }
-};
-
-const menu = navItems.map((item) => (
-  <li key={item.id} onMouseDown={(e) => e.preventDefault()}>
-    <Link
-      onClick={handleMenuClick}
-      to={item.url.toLowerCase()}
-      smooth={true}
-      duration={1000}
-      spy={true}
-      offset={-140}
-      activeStyle={{
-        backgroundColor: "#9929fb",
-        color: "white",
-      }}
-      className={`hover:text-picto-primary px-5 py-3 mx-1`}
-    >
-      {item.name}
-    </Link>
-  </li>
-));
 
 const NavBar = () => {
   const [position, setPosition] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,73 +25,118 @@ const NavBar = () => {
     };
   }, []);
 
+  const isActive = (path) => location.pathname === path;
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <div
-      className={`sticky top-0 ${
-        position > 50
-          ? "bg-soft-white border-b border-gray-300"
-          : "bg-white border-white"
-      } z-50 transition-all duration-1000`}
-    >
-      <div className="navbar flex justify-between mx-auto content">
-        <div className="flex items-center justify-between">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+    <nav className={`sticky top-0 z-50 transition-all duration-300 ${
+      position > 50 
+        ? "bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm" 
+        : "bg-gradient-to-r from-blue-500 to-purple-600"
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16 lg:h-20">
+          {/* Logo */}
+          <Link 
+            to="/" 
+            className="flex items-center"
+            onClick={closeMobileMenu}
+          >
+            <span className={`text-lg sm:text-xl lg:text-2xl font-bold transition-colors duration-300 ${
+              position > 50 ? "text-gray-900" : "text-white"
+            }`}>
+              Beshah
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.id}
+                to={item.path}
+                className={`px-3 xl:px-4 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base ${
+                  isActive(item.path)
+                    ? "bg-blue-600 text-white shadow-md"
+                    : position > 50 
+                      ? "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+                      : "text-white hover:bg-blue-600/80 hover:text-white"
+                }`}
               >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={toggleMobileMenu}
+            className={`lg:hidden p-2 rounded-lg transition-all duration-300 ${
+              position > 50 
+                ? "text-gray-700 hover:bg-gray-100" 
+                : "text-white hover:bg-white/10"
+            }`}
+            aria-label="Toggle mobile menu"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMobileMenuOpen ? (
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
                 />
-              </svg>
-            </div>
-            <ul
-              tabIndex={0}
-              className={`menu menu-lg dropdown-content rounded-box z-1 mt-3 w-lvw p-2 shadow font-semibold flex-nowrap bg-white text-black`}
-            >
-              {menu}
-            </ul>
-          </div>
-
-          <Link
-            href="#introduction"
-            to={`introduction`}
-            smooth={true}
-            duration={900}
-            className="flex items-center border-0 lg:max-xxl:ps-5"
-          >
-            <img src={logo} className="h-8 sm:h-14 rounded-2xl" alt="logo" />
-            <p className="text-2xl sm:text-[32px] my-auto ms-[12px] font-semibold">
-              Brooklyn
-            </p>
-          </Link>
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
 
-        <div className="lg:flex items-center">
-          <ul className="hidden lg:flex menu menu-horizontal text-[16px] font-medium md:shrink-0">
-            {menu}
-          </ul>
-          <p className="">
-            <Link
-              className="btn btn-sm xs:btn-md sm:btn-lg btn-primary"
-              href="#contact"
-              to={`contact`}
-              smooth={true}
-              duration={900}
-            >
-              Contact
-            </Link>
-          </p>
+        {/* Mobile Navigation Menu */}
+        <div className={`lg:hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen 
+            ? "max-h-96 opacity-100 pb-4" 
+            : "max-h-0 opacity-0 overflow-hidden"
+        }`}>
+          <div className="bg-white/95 backdrop-blur-md rounded-lg shadow-lg mt-2 border border-gray-200">
+            <div className="px-4 py-2">
+              {navItems.map((item) => (
+                <Link
+                  key={item.id}
+                  to={item.path}
+                  onClick={closeMobileMenu}
+                  className={`block px-4 py-3 rounded-lg transition-all duration-300 font-medium ${
+                    isActive(item.path)
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
