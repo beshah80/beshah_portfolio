@@ -9,6 +9,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import person from "../assets/images/person.png";
+// Assuming you have a background image for the banner in this path
+import bannerBg from "../assets/images/banner-bg.png";
 
 const Home = () => {
   const stats = [
@@ -22,17 +24,17 @@ const Home = () => {
     {
       icon: faCode,
       title: "Frontend Development",
-      description: "Modern React applications with responsive design and optimal performance."
+      description: "Building responsive React.js and Next.js applications with clean, user-friendly interfaces."
     },
     {
       icon: faPalette,
-      title: "UI/UX Design",
-      description: "User-centered design solutions that combine aesthetics with functionality."
+      title: "System Analysis",
+      description: "Analyzing requirements and designing effective solutions for projects and applications."
     },
     {
       icon: faRocket,
-      title: "Full-Stack Solutions",
-      description: "End-to-end web applications from database design to deployment."
+      title: "Developer Support",
+      description: "Helping other developers troubleshoot, optimize code, and implement best practices."
     },
     {
       icon: faUsers,
@@ -43,21 +45,21 @@ const Home = () => {
 
   const recentProjects = [
     {
-      title: "PhoneSell E-commerce Platform",
-      description: "Full-stack e-commerce platform for mobile phone sales",
-      image: "./src/assets/images/projects/phonesell.png",
+      title: "Country Quiz App",
+      description: "A React-based country flag quiz app featuring multiple-choice questions and interactive feedback.",
+      image: "./src/assets/images/projects/country_quiz.png",
       link: "/projects"
     },
     {
-      title: "Blog Post Platform",
-      description: "Dynamic blog platform with rich text editing built with Next.js",
-      image: "./src/assets/images/projects/blog-post.png",
+      title: "Real-time Chat Application",
+      description: "Full-stack messaging app with Socket.IO integration, authentication, and private & global chats.",
+      image: "./src/assets/images/projects/chat_app.png",
       link: "/projects"
     },
     {
-      title: "Tenacare Health Platform",
-      description: "Health platform with responsive design for patient interactions",
-      image: "./src/assets/images/projects/tenacare.png",
+      title: "TechBit Blog Platform (Next.js)",
+      description: "A modern blog platform built with Next.js, featuring dynamic content and responsive design.",
+      image: "./src/assets/images/projects/techbit.png",
       link: "/projects"
     }
   ];
@@ -65,8 +67,13 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 py-12 sm:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className="relative py-12 sm:py-16 lg:py-20 bg-cover bg-center"
+        style={{ backgroundImage: `url(${bannerBg})` }}
+      >
+        <div className="absolute inset-0 bg-blue-900/70"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="text-white order-2 lg:order-1">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
@@ -260,28 +267,30 @@ const Home = () => {
         </div>
       </div>
 
-      {/* CTA Section */}
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 py-12 sm:py-16 lg:py-20">
+      {/* CTA Section - UPDATED BACKGROUND AND BUTTONS */}
+      <div className="bg-white py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
             Ready to Start Your Next Project?
           </h2>
-          <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
             Let's work together to bring your ideas to life. I'm here to help you create
             something amazing that your users will love.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            {/* Changed from button style to text link style */}
             <Link
               to="/contact"
-              className="bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 text-sm sm:text-base"
+              className="text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300 text-lg sm:text-xl flex items-center justify-center gap-1"
             >
-              Get In Touch
+              Get In Touch →
             </Link>
+            {/* Changed from button style to text link style */}
             <Link
               to="/about"
-              className="bg-white/20 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-white/30 transition-colors duration-300 text-sm sm:text-base"
+              className="text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300 text-lg sm:text-xl flex items-center justify-center gap-1"
             >
-              Learn More About Me
+              Learn More About Me →
             </Link>
           </div>
         </div>

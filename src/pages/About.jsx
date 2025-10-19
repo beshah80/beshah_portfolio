@@ -86,14 +86,14 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section aria-labelledby="about-heading" className="bg-gradient-to-r from-blue-600 to-purple-600 py-12 sm:py-16 lg:py-20">
+      {/* Hero Section - UPDATED BACKGROUND */}
+      <section aria-labelledby="about-heading" className="bg-gray-50 py-12 sm:py-16 lg:py-20 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 id="about-heading" className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
+            <h1 id="about-heading" className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
               About Me
             </h1>
-            <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Fourth-year Information Systems student and passionate front-end developer, specializing in React.js, Next.js, and front-end library challenges to create accessible, performant web experiences.
             </p>
           </div>
@@ -101,7 +101,7 @@ const About = () => {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        {/* Personal Background */}
+        {/* Personal Background (No Change) */}
         <section aria-labelledby="background-heading" className="mb-12 sm:mb-16">
           <h2 id="background-heading" className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">
             Personal Background
@@ -116,7 +116,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* Skills */}
+        {/* Skills (No Change) */}
         <section aria-labelledby="skills-heading" className="mb-12 sm:mb-16">
           <h2 id="skills-heading" className="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8 text-center flex items-center justify-center gap-2 sm:gap-3">
             <CertificateIcon />
@@ -134,7 +134,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* Education */}
+        {/* Education (No Change) */}
         <section aria-labelledby="education-heading" className="mb-12 sm:mb-16">
           <h2 id="education-heading" className="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8 text-center flex items-center justify-center gap-2 sm:gap-3">
             <GraduationCapIcon />
@@ -152,7 +152,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* Certifications */}
+        {/* Certifications (No Change) */}
         <section aria-labelledby="certifications-heading" className="mb-12 sm:mb-16">
           <h2 id="certifications-heading" className="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8 text-center flex items-center justify-center gap-2 sm:gap-3">
             <CertificateIcon />
@@ -171,7 +171,7 @@ const About = () => {
           </div>
         </section>
 
-        {/* Internships */}
+        {/* Internships (No Change) */}
         <section aria-labelledby="internships-heading" className="mb-12 sm:mb-16">
           <h2 id="internships-heading" className="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 sm:mb-8 text-center flex items-center justify-center gap-2 sm:gap-3">
             <BriefcaseIcon />
@@ -199,19 +199,19 @@ const About = () => {
           </div>
         </section>
 
-        {/* Resume Download */}
+        {/* Resume Download - UPDATED BACKGROUND */}
         <section aria-labelledby="resume-heading" className="text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 sm:p-8">
-            <h3 id="resume-heading" className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-lg">
+            <h3 id="resume-heading" className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
               Download My Resume
             </h3>
-            <p className="text-white/90 mb-4 sm:mb-6 leading-relaxed">
+            <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed">
               Explore my full experience, skills, and achievements in detail.
             </p>
             <a
               href="/resume.pdf" // Update with actual path
               download
-              className="inline-flex items-center gap-2 bg-white text-blue-700 px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500/50"
               aria-label="Download resume"
             >
               <DownloadIcon />

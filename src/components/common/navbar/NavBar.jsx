@@ -24,25 +24,21 @@ const NavBar = () => {
   }, []);
 
   const isActive = (path) => location.pathname === path;
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  // 🟤 Elegant Dark Bronze Theme
+  const navbarClasses =
+    position > 50
+      ? "bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-sm"
+      : "bg-gradient-to-r from-neutral-900 to-amber-900";
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
-  // Consistent color theme
-  const navbarClasses = position > 50
-    ? "bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-sm"
-    : "bg-gradient-to-r from-blue-600 to-purple-600";
-
-  const logoColor = position > 50 ? "text-gray-900" : "text-white";
+  const logoColor = position > 50 ? "text-gray-900" : "text-amber-400";
   const linkColor = position > 50 ? "text-gray-700" : "text-white/90";
-  const linkHover = position > 50
-    ? "hover:bg-gray-100 hover:text-blue-600"
-    : "hover:bg-white/10 hover:text-white";
+  const linkHover =
+    position > 50
+      ? "hover:bg-gray-100 hover:text-amber-700"
+      : "hover:bg-white/10 hover:text-amber-400";
 
   return (
     <nav
@@ -53,12 +49,10 @@ const NavBar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center"
-            onClick={closeMobileMenu}
-          >
-            <span className={`text-lg sm:text-xl lg:text-2xl font-bold transition-colors duration-300 ${logoColor}`}>
+          <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
+            <span
+              className={`text-lg sm:text-xl lg:text-2xl font-bold transition-colors duration-300 ${logoColor}`}
+            >
               Beshah
             </span>
           </Link>
@@ -70,7 +64,7 @@ const NavBar = () => {
                 key={item.id}
                 to={item.path}
                 className={`px-3 xl:px-4 py-2 rounded-lg transition-all duration-300 font-medium text-sm xl:text-base ${isActive(item.path)
-                  ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md ring-1 ring-blue-500/30"
+                  ? "bg-gradient-to-r from-amber-600 to-yellow-500 text-white shadow-md ring-1 ring-amber-400/30"
                   : `${linkColor} ${linkHover}`
                   }`}
                 aria-current={isActive(item.path) ? "page" : undefined}
@@ -134,8 +128,8 @@ const NavBar = () => {
                   to={item.path}
                   onClick={closeMobileMenu}
                   className={`block px-4 py-3 rounded-lg transition-all duration-300 font-medium ${isActive(item.path)
-                    ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md"
-                    : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+                    ? "bg-gradient-to-r from-amber-600 to-yellow-500 text-white shadow-md"
+                    : "text-gray-700 hover:bg-gray-100 hover:text-amber-700"
                     }`}
                   role="menuitem"
                 >

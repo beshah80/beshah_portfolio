@@ -179,20 +179,21 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section aria-labelledby="projects-heading" className="bg-gradient-to-r from-blue-600 to-purple-600 py-12 sm:py-16 lg:py-20">
+      {/* Hero Section - UPDATED BACKGROUND */}
+      <section aria-labelledby="projects-heading" className="bg-white py-12 sm:py-16 lg:py-20 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 id="projects-heading" className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
+            <h1 id="projects-heading" className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
               My Projects
             </h1>
-            <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Explore my portfolio of React and Next.js applications, including TechBit and Adheno, showcasing front-end development challenges and modern web solutions.
             </p>
           </div>
         </div>
       </section>
 
+      {/* --- Rest of the Projects Content --- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Category Filter */}
         <div className="flex justify-center mb-8 sm:mb-12">
@@ -225,13 +226,13 @@ const Projects = () => {
                 className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group"
               >
                 {/* Project Image - *** IMPROVED FOR ASPECT RATIO CONSISTENCY *** */}
-                <div className="relative overflow-hidden **aspect-video**">
+                <div className="relative overflow-hidden aspect-video">
                   <img
                     src={project.image}
                     // IMPROVED alt text suggestion for better context (can be made more descriptive)
                     alt={`Screenshot of the ${project.title} interface`}
                     // w-full h-40/48 is replaced with 'absolute inset-0 w-full h-full'
-                    className="**absolute inset-0 w-full h-full** object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
                     <span className="bg-blue-600 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium flex items-center gap-1">
@@ -315,7 +316,7 @@ const Projects = () => {
           })}
         </div>
 
-        {/* Call to Action */}
+        {/* Call to Action (No Change Requested, but good practice to ensure consistency) */}
         <section aria-labelledby="cta-heading" className="text-center mt-12 sm:mt-16">
           <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm">
             <h3 id="cta-heading" className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
